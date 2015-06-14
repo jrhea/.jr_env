@@ -1,0 +1,29 @@
+#! /bin/bash
+
+if [ -z "$1" ]; then
+	echo This script returns the filename[s] with titles containing [search pattern]
+	echo -e ' \t 'usage: To search only on title:
+	echo -e ' \t\t 'fr [search pattern]      
+	echo -e ' \t 'usage: To search on title and desciption:
+	echo -e ' \t\t 'fr -d [search pattern] 
+	exit
+fi
+
+
+if [ "$1" = "-d" ]; then
+	perl /usr/local/bin/mythname.pl --description --file /mnt/mythtv-data1/recordings/*.mpg  --grep "$2"
+	exit
+elif [ "$1" = "-a" ]; then
+	perl /usr/local/bin/mythname.pl --recgroup --file /mnt/mythtv-data1/recordings/*.mpg 
+	exit
+else
+	perl /usr/local/bin/mythname.pl --file /mnt/mythtv-data1/recordings/*.mpg  --grep "$1"
+	exit
+fi
+
+#echo Search in:
+#OPTIONS="Titles 'Titles and Descriptions' Quit"
+#select opt in $OPTIONS; do
+
+
+#done

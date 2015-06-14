@@ -1,0 +1,40 @@
+MYTHTV
+-Find the name of the all the files in recordings directory:
+	perl mythname.pl --file *.mpg
+-Find the title of a specific file in recordings directory:
+	perl mythname.pl --file *.mpg  |grep "Despicable"
+-Created the command:
+	fr [search pattern]
+	fr -d [search pattern]
+in /usr/bin that allows you to easily find the recording files
+-Convert video to avi (Low Q) 
+	mythffmpeg -y -i /mnt/mythtv-data1/recordings/3062_20120930130000.mpg -ac 2 -vf "scale=640:360" -f avi -vcodec libxvid -vtag XVID -qmin 3 -qmax 3 -acodec /libmp3lame -ab 64k Despicable_Me.avi 2> /dev/null
+-Convert video to mp4
+	ffmpeg -i /mnt/mythtv-data1/recordings/3203_20120929163000.mpg -ac 2 -strict experimental -b:a 128k -vcodec mpeg4 -b:v 1200k -flags +aic+mv4 Gattaca.mp4
+-Database password located here:
+	/etc/mythtv/mysql.txt
+-MythTV version
+	mythbackend --version
+	mythfrontend --version
+-Had issues with MythWeb giving access denied error. Logs in /var/log/apache2 said something about failed to open required-'modules/_shared/tmpl/tmpl/footer.php'
+ It is a known issue with Mythbuntu and after running:
+
+	sudo dpkg-reconfigure mythweb
+
+ It worked!
+
+-IRBLASTER
+ls /dev/lirc*     -> should see lircd and lirc0
+make changes to lircd.conf and hardware.conf then restart using:
+	/etc/init.d/lirc stop 
+	/etc/init.d/lirc start
+reload module 
+	modprobe lirc_zilog
+test irblaster
+	sudo irsend -d /dev/lircd SEND_ONCE blaster 0
+
+-VERBOSE LOGGING
+   if backend is already running type: 
+
+	mythbackend --setverbose system    (verbose)
+	mythbackend --setverbose general   (normal)
