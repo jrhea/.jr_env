@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Matt 8/09
 # Clone a hard drive. Mount the from and to drives then
 # define FROMDIR and TODIR where you mounted them and
 # run this script to clone FROMDIR to TODIR. Or you
