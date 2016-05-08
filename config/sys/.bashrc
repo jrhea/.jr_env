@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-PATH=$PATH:/usr/local/bin
+PATH=$PATH:/usr/local/bin:$HOME/.jr_env/utils/sys:$HOME/.jr_env/utils/mythtv
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
