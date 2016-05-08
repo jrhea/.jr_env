@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Matt 8/09
 # Clone a hard drive. Mount the from and to drives then
 # define FROMDIR and TODIR where you mounted them and
 # run this script to clone FROMDIR to TODIR. Or you
@@ -23,7 +22,7 @@ SYS="no"
 # Adjust the following. FROMDIR= where you want to copy from.
 # TODIR= where you want to copy to.
 FROMDIR=/
-TODIR=/mnt/mythtv-data-backup/mythtv-os-backup/11252013
+TODIR=/mnt
 
 if [ ! -e $FROMDIR ]; then
   echo "$FROMDIR not found. Aborted."
