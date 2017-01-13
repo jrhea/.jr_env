@@ -55,6 +55,17 @@ fi
 #need to have this conditionally set
 PATH=$PATH:/usr/local/bin:$HOME/.jr_env/utils/sys:$HOME/.jr_env/utils/mythtv
 
+#####################################################
+# set up Local/Remote Display
+#####################################################
+if [ -z ${DISPLAY} ]; then
+  if [ ${REMOTEHOST} ]; then
+    export DISPLAY=${REMOTEHOST}:0.0
+  else
+    export DISPLAY=:0.0
+  fi
+fi
+
 #makes joe default editor for crontab etc
 export EDITOR="joe"
 
@@ -70,3 +81,6 @@ then # you are root, set red colour prompt
 else # normal
   PS1="\\u@\\h:$ "
 fi
+
+# added by Miniconda3 4.2.12 installer
+export PATH="/home/jrhea/miniconda3/bin:$PATH"
