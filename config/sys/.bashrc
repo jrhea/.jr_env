@@ -24,22 +24,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-#alias ll='ls -alF'
-#alias la='ls -A'
-#alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -52,35 +36,3 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-#need to have this conditionally set
-PATH=$PATH:/usr/local/bin:$HOME/.jr_env/utils/sys:$HOME/.jr_env/utils/mythtv
-
-#####################################################
-# set up Local/Remote Display
-#####################################################
-if [ -z ${DISPLAY} ]; then
-  if [ ${REMOTEHOST} ]; then
-    export DISPLAY=${REMOTEHOST}:0.0
-  else
-    export DISPLAY=:0.0
-  fi
-fi
-
-#makes joe default editor for crontab etc
-export EDITOR="joe"
-
-# Alias definitions.
-if [ -f .bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# If id command returns zero, youve root access.
-if [ $(id -u) -eq 0 ];
-then # you are root, set red colour prompt
-  PS1="$(tput setaf 1)\\u@\\h:# \\[$(tput sgr0)"
-else # normal
-  PS1="\\u@\\h:$ "
-fi
-
-# added by Miniconda3 4.2.12 installer
-export PATH="/home/jrhea/miniconda3/bin:$PATH"
