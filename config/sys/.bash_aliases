@@ -1,5 +1,5 @@
 
-alias bal='source ~/bash_aliases'
+alias bal='source ~/.bash_aliases'
 alias sob='source ~/.bash_profile'
 alias sol='source .login'
 
