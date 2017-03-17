@@ -1,4 +1,4 @@
-alias update-env='source <(curl -s https://raw.githubusercontent.com/jrhea/.jr_env/master/sync-repo.sh)'
+alias update-env='source <(curl -sk https://raw.githubusercontent.com/jrhea/.jr_env/master/sync-repo.sh)'
 alias soa='source ~/.bash_aliases'
 alias sop='source ~/.bash_profile'
 alias sol='source .login'
