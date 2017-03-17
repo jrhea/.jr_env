@@ -2,15 +2,30 @@
 
 this is the only place that i know my wife won't reorganize when i am not looking
 
-## how to use this environment
+## setup
+
+run this command in bash:
+
+```bash
+
+$ source <(curl -s https://raw.githubusercontent.com/jrhea/.jr_env/master/sync-repo.sh)
+
+```
+or follow these steps:
 
 1. clone the repo 
 
-  `$ git clone https://github.com/jrhea/.jr_env.git`
+```bash
 
+git clone https://github.com/jrhea/.jr_env.git`
+
+```
 2. run init script
-  
-  `$ source ~/.jr_env/init.env`
+```bash
+
+$ source ~/.jr_env/init.env
+
+```
   
 ## project structure
 
@@ -22,6 +37,10 @@ this is the only place that i know my wife won't reorganize when i am not lookin
 
 if you know that you work in an environment that self-signs certificates and you want to clone this repo then workaround is to disable Git SSL verfication:
 
-  `$ git config --global http.sslVerify false`
+```bash
+
+$ git config --global http.sslVerify false
+
+```
 
 > #### disclaimer: i am not recommending that you do this and i do not take responsibility if something bad happens.  catch me if you can
