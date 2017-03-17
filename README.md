@@ -1,6 +1,6 @@
 # wherever you go there you are
 
-this is the only place that i know my wife won't reorganize when i am not looking
+this is the only place that my wife won't reorganize when i am not looking
 
 ## setup
 
