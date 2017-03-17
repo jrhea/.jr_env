@@ -7,3 +7,5 @@ else
   git pull
   cd ..
 fi
+
+source $HOME/.jr_env/init.env
