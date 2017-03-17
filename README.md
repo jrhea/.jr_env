@@ -17,7 +17,7 @@ or follow these steps:
 
 ```bash
 
-git clone https://github.com/jrhea/.jr_env.git`
+$ git clone https://github.com/jrhea/.jr_env.git
 
 ```
 2. run init script
