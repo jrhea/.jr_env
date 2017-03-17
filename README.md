@@ -7,11 +7,11 @@ i have organized the files that I will dist into these categories:
 
 1. clone the repo 
 
-  $ git clone https://github.com/jrhea/.jr_env.git
+  `$ git clone https://github.com/jrhea/.jr_env.git`
 
 2. run init script
   
-  $ source ~/.jr_env/init.env
+  `$ source ~/.jr_env/init.env`
   
 ## project structure
 
