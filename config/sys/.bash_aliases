@@ -1,6 +1,6 @@
-
-alias bal='source ~/.bash_aliases'
-alias sob='source ~/.bash_profile'
+alias update-env='source <(curl -s https://raw.githubusercontent.com/jrhea/.jr_env/master/sync-repo.sh)'
+alias soa='source ~/.bash_aliases'
+alias sop='source ~/.bash_profile'
 alias sol='source .login'
 
 alias wai='echo "\n Host: `hostname`  User: `whoami`  `id`  `tty`\n"'
