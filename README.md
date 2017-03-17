@@ -1,7 +1,6 @@
 # wherever you go there you are
 
-this is an attempt to create some consistency in the different *nix environments i work in.
-i have organized the files that I will dist into these categories:
+this is the only place that i know my wife won't reorganize when i am not looking
 
 ## how to use this environment
 
