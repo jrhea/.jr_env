@@ -11,6 +11,15 @@ run this command in bash:
 $ source <(curl -s https://raw.githubusercontent.com/jrhea/.jr_env/master/sync-repo.sh)
 
 ```
+
+or 
+
+```bash
+
+$ bash <(curl -s https://raw.githubusercontent.com/jrhea/.jr_env/master/sync-repo.sh)
+
+```
+
 or follow these steps:
 
 1. clone the repo 
