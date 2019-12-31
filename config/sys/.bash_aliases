@@ -10,10 +10,8 @@ alias cl='clear screen '
 alias ks='kill %% '
 alias purge='find . \( -name "*~" -o -name "*.bak" -o -name core \)  -print -exec rm {} \;'
 
-alias up='cd .. '
-alias pu='pushd'
-alias po='popd'
 alias joe='joe -backpath ~/.joe_backups --wordwrap -icase -wrap -autoindent -highlight -indentc 32 -spaces '
+alias projects='cd ~/Documents/projects'
 #alias mybin 'cd ~/bin '
 
 alias qqq='sdiff -s '
