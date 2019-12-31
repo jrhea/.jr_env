@@ -9,9 +9,6 @@ if [ -z "$MYPATH" ]; then
   if [ -d "$HOME/bin" ] ; then
     MYPATH="$HOME/bin:$MYPATH"
   fi
-  if [ -d "$HOME/3rd-party/miniconda3" ] ; then
-    MYPATH="$HOME/3rd-party/miniconda3/bin:$MYPATH"
-  fi
   export MYPATH
 fi
 # set PATH
