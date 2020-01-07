@@ -23,8 +23,8 @@ if [ -z ${DISPLAY} ]; then
   fi
 fi
 
-# joe default editor for crontab etc
-export EDITOR="joe"
+# vi default editor for crontab etc
+export EDITOR="vi"
 # Alias definitions
 if [ -f "$HOME/.bash_aliases" ]; then
   source $HOME/.bash_aliases
