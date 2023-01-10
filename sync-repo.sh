@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cd $HOME
 if [ ! -d "$HOME/.jr_env" ]; then
   git clone https://github.com/jrhea/.jr_env.git
 else
