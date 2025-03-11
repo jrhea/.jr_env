@@ -81,9 +81,9 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# Add foundry to path
+export PATH="$PATH:/home/jonny/.foundry/bin"
+
 # Remove any dups in PATH
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
-. "$HOME/.cargo/env"
-
-export PATH="$PATH:/home/jonny/.foundry/bin"
 . "$HOME/.cargo/env"
