@@ -11,9 +11,17 @@ alias ks='kill %% '
 alias purge='find . \( -name "*~" -o -name "*.bak" -o -name core \)  -print -exec rm {} \;'
 
 alias joe='joe -backpath ~/.joe_backups --wordwrap -icase -wrap -autoindent -highlight -indentc 32 -spaces '
-alias projects='cd ~/Documents/projects'
-#alias mybin 'cd ~/bin '
-
+projects() {
+  if [ -d "$HOME/projects" ]; then
+    cd "$HOME/projects" || return
+  elif [ -d "$HOME/Documents/projects" ]; then
+    cd "$HOME/Documents/projects" || return
+  else
+    echo "No projects dir found at ~/projects or ~/Documents/projects" >&2
+    return 1
+  fi
+}
+alias projects='projects'
 alias qqq='sdiff -s '
 alias modified='find . -mtime -\!* -type f -print'
 

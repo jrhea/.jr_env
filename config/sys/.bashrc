@@ -71,19 +71,49 @@ else
   PS1="\\u@\\h:$ "
 fi
 
+# OS detection
+OS="$(uname -s)"
+
+# Homebrew (macOS only; guard on existence)
+if [ "$OS" = "Darwin" ] && [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# MacPorts (macOS only; guard on dir)
+if [ "$OS" = "Darwin" ] && [ -d /opt/local/bin ]; then
+  export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+fi
+
 # nvm config
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm" 
+# macOS (Homebrew)
+if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+  . "/opt/homebrew/opt/nvm/nvm.sh"
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+# standard install (Linux / manual)
+elif [ -s "$NVM_DIR/nvm.sh" ]; then
+  . "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+fi
+
+# foundry
+[ -d "$HOME/.foundry/bin" ] && export PATH="$PATH:$HOME/.foundry/bin"
+
+# Go tools
+[ -d "$HOME/go/bin" ] && export PATH="$PATH:$HOME/go/bin"
+
+# uv
+[ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 
 # penv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-# Add foundry to path
-export PATH="$PATH:/home/jonny/.foundry/bin"
+# cargo env 
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
 # Remove any dups in PATH
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
-. "$HOME/.cargo/env"

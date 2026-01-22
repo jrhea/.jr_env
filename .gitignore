@@ -1,2 +1,5 @@
 DEADJOE
 *~
+
+# Never allow embedded repos
+**/.git#
