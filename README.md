@@ -1,7 +1,3 @@
-# wherever you go there you are
-
-this is the only place that my wife won't reorganize when i am not looking
-
 ## setup
 
 run this command in bash:
@@ -51,5 +47,3 @@ if you know that you work in an environment that self-signs certificates and you
 $ git config --global http.sslVerify false
 
 ```
-
-> #### disclaimer: i am not recommending that you do this and i do not take responsibility if something bad happens.  catch me if you can
