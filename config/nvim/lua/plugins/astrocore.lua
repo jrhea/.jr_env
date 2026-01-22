@@ -95,6 +95,13 @@ return {
         ["<Leader>h"] = { "<C-o>", desc = "Jump back" },
         ["<Leader>l"] = { "<C-i>", desc = "Jump forward" },
 
+        ["<M-Down>"] = { "<C-d>zz", desc = "Scroll down half page (centered)" },
+        ["<M-Up>"]   = { "<C-u>zz", desc = "Scroll up half page (centered)" },
+
+        ["<Down>"] = { "jzz", desc = "Move down (centered)" },
+        ["<Up>"]   = { "kzz", desc = "Move up (centered)" },
+
+
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
