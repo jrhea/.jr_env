@@ -80,7 +80,7 @@ return {
 
         ["gr"] = { 
           function()
-            require("snacks").picker.lsp_references { jump = false }
+            require("snacks").picker.lsp_references { auto_confirm = false }
           end,
           desc = "Find references (list)",
         },
