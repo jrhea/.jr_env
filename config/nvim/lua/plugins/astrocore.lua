@@ -3,6 +3,48 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
+local function find_win(pred)
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    if pred(buf, win) then return win end
+  end
+end
+
+local function resize_win_width(win, delta)
+  if not win or not vim.api.nvim_win_is_valid(win) then return end
+  local w = vim.api.nvim_win_get_width(win)
+  vim.api.nvim_win_set_width(win, math.max(1, w + delta))
+end
+
+local function resize_win_height(win, delta)
+  if not win or not vim.api.nvim_win_is_valid(win) then return end
+  local h = vim.api.nvim_win_get_height(win)
+  vim.api.nvim_win_set_height(win, math.max(1, h + delta))
+end
+
+local function neotree_win()
+  return find_win(function(buf)
+    return vim.bo[buf].filetype == "neo-tree"
+  end)
+end
+
+local function terminal_win()
+  return find_win(function(buf)
+    return vim.bo[buf].buftype == "terminal"
+  end)
+end
+
+local function resize_neotree(delta)
+  local win = neotree_win()
+  if win then resize_win_width(win, delta) end
+end
+
+local function resize_terminal(delta)
+  local win = terminal_win()
+  if win then resize_win_height(win, delta) end
+end
+
+
 ---@type LazySpec
 return {
   "AstroNvim/astrocore",
@@ -101,6 +143,12 @@ return {
         ["<Down>"] = { "jzz", desc = "Move down (centered)" },
         ["<Up>"]   = { "kzz", desc = "Move up (centered)" },
 
+        ["<Leader><Left>"]  = { function() resize_neotree(-2) end, desc = "Neo-tree narrower" },
+        ["<Leader><Right>"] = { function() resize_neotree( 2) end, desc = "Neo-tree wider" },
+
+        ["<Leader><Up>"]    = { function() resize_terminal( 2) end, desc = "Terminal taller" },
+        ["<Leader><Down>"]  = { function() resize_terminal(-2) end, desc = "Terminal shorter" },
+
 
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
@@ -108,6 +156,13 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+      },
+      t = {
+        ["<Leader><Left>"]  = { function() resize_neotree(-2) end, desc = "Neo-tree narrower" },
+        ["<Leader><Right>"] = { function() resize_neotree( 2) end, desc = "Neo-tree wider" },
+
+        ["<Leader><Up>"]    = { function() resize_terminal( 2) end, desc = "Terminal taller" },
+        ["<Leader><Down>"]  = { function() resize_terminal(-2) end, desc = "Terminal shorter" },
       },
       i = {
         ["jk"] = { "<Esc>", desc = "Escape insert mode" },
