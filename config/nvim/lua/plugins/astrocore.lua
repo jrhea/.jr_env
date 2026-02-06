@@ -134,8 +134,8 @@ return {
         },
         ["<Leader>rn"] = { function() vim.lsp.buf.rename() end, desc = "Rename symbol" },
 
-        ["<Leader>h"] = { "<C-o>", desc = "Jump back" },
-        ["<Leader>l"] = { "<C-i>", desc = "Jump forward" },
+        ["<Leader>j"] = { "<C-o>", desc = "Jump back" },
+        ["<Leader>k"] = { "<C-i>", desc = "Jump forward" },
 
         ["<M-Down>"] = { "<C-d>zz", desc = "Scroll down half page (centered)" },
         ["<M-Up>"]   = { "<C-u>zz", desc = "Scroll up half page (centered)" },
@@ -149,6 +149,7 @@ return {
         ["<Leader><Up>"]    = { function() resize_terminal( 2) end, desc = "Terminal taller" },
         ["<Leader><Down>"]  = { function() resize_terminal(-2) end, desc = "Terminal shorter" },
 
+        ["<Leader>la"] = { function() vim.lsp.buf.code_action() end, desc = "Code actions" },
 
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
