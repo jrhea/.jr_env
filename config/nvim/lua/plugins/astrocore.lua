@@ -106,10 +106,9 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
-        -- navigate buffer tabs
+        -- Buffers
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {
           function()
@@ -120,13 +119,29 @@ return {
           desc = "Close buffer from tabline",
         },
 
+        -- navigation
+        ["<Leader>j"] = { "<C-o>", desc = "Jump back" },
+        ["<Leader>k"] = { "<C-i>", desc = "Jump forward" },
+        ["<M-Down>"] = { "<C-d>zz", desc = "Scroll down half page (centered)" },
+        ["<M-Up>"]   = { "<C-u>zz", desc = "Scroll up half page (centered)" },
+        ["<Down>"] = { "jzz", desc = "Move down (centered)" },
+        ["<Up>"]   = { "kzz", desc = "Move up (centered)" },
+
+        -- pane resizing
+        ["<Leader><Left>"]  = { function() resize_neotree(-2) end, desc = "Neo-tree narrower" },
+        ["<Leader><Right>"] = { function() resize_neotree( 2) end, desc = "Neo-tree wider" },
+        ["<Leader><Up>"]    = { function() resize_terminal( 2) end, desc = "Terminal taller" },
+        ["<Leader><Down>"]  = { function() resize_terminal(-2) end, desc = "Terminal shorter" },
+
+        -- LSP
+        ["<Leader>la"] = { function() vim.lsp.buf.code_action() end, desc = "List actions" },
         ["gr"] = { 
           function()
             require("snacks").picker.lsp_references { auto_confirm = false }
           end,
           desc = "Find references (list)",
         },
-        gd = {
+        ["gd"] = {
           function()
             vim.lsp.buf.definition()
           end,
@@ -134,23 +149,8 @@ return {
         },
         ["<Leader>rn"] = { function() vim.lsp.buf.rename() end, desc = "Rename symbol" },
 
-        ["<Leader>j"] = { "<C-o>", desc = "Jump back" },
-        ["<Leader>k"] = { "<C-i>", desc = "Jump forward" },
-
-        ["<M-Down>"] = { "<C-d>zz", desc = "Scroll down half page (centered)" },
-        ["<M-Up>"]   = { "<C-u>zz", desc = "Scroll up half page (centered)" },
-
-        ["<Down>"] = { "jzz", desc = "Move down (centered)" },
-        ["<Up>"]   = { "kzz", desc = "Move up (centered)" },
-
-        ["<Leader><Left>"]  = { function() resize_neotree(-2) end, desc = "Neo-tree narrower" },
-        ["<Leader><Right>"] = { function() resize_neotree( 2) end, desc = "Neo-tree wider" },
-
-        ["<Leader><Up>"]    = { function() resize_terminal( 2) end, desc = "Terminal taller" },
-        ["<Leader><Down>"]  = { function() resize_terminal(-2) end, desc = "Terminal shorter" },
-
-        ["<Leader>la"] = { function() vim.lsp.buf.code_action() end, desc = "Code actions" },
-
+        -- LLM
+        ["<Leader>ac"] = { "<cmd>AvanteChat<cr>", desc = "Chat (right pane)" },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
