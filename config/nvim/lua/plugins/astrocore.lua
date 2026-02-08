@@ -120,8 +120,8 @@ return {
         },
 
         -- navigation
-        ["<Leader>j"] = { "<C-o>", desc = "Jump back" },
-        ["<Leader>k"] = { "<C-i>", desc = "Jump forward" },
+        ["<C-Left>"] = { "<C-o>", desc = "Jump back" },
+        ["<C-Right>"] = { "<C-i>", desc = "Jump forward" },
         ["<M-Down>"] = { "<C-d>zz", desc = "Scroll down half page (centered)" },
         ["<M-Up>"]   = { "<C-u>zz", desc = "Scroll up half page (centered)" },
         ["<Down>"] = { "jzz", desc = "Move down (centered)" },
