@@ -151,6 +151,23 @@ return {
 
         -- LLM
         ["<Leader>ac"] = { "<cmd>AvanteChat<cr>", desc = "Chat (right pane)" },
+        ["<Leader>ap"] = {
+          function()
+            local providers = {
+                { label = "codex (OAuth via ACP)", value = "codex" },
+                { label = "claude-code (ACP)",     value = "claude-code" },
+              }
+
+              vim.ui.select(providers, {
+                prompt = "Avante provider",
+                format_item = function(item) return item.label end,
+              }, function(choice)
+                if not choice then return end
+                vim.cmd("AvanteSwitchProvider " .. choice.value)
+              end)
+            end,
+            desc = "Switch LLM Provider",
+          },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },

@@ -29,31 +29,17 @@ return {
         },
       },
 
-      ---------------------------------------------------------------------------
-      -- OPTION A: Use OpenAI API directly (no ACP / no Codex CLI needed)
-      ---------------------------------------------------------------------------
       provider = "codex",
-      providers = {
-        openai = {
-          endpoint = "https://api.openai.com/v1",
-          -- Pick a coding-oriented model name you actually have access to.
-          -- Safe defaults if you're unsure:
-          model = "gpt-5-code",
-          timeout = 60000,
-
-          -- Request-body knobs MUST go under extra_request_body on newer Avante.
-          extra_request_body = {
-            temperature = 0,
-            -- If you use long generations, bump this.
-            max_completion_tokens = 4096,
-          },
-        },
-      },
       acp_providers = {
         codex = {
           command = "npx",
-           args = { "@zed-industries/codex-acp" },
+          args = { "@zed-industries/codex-acp" },
         },
+        ["claude-code"] = {
+          command = "npx",
+          args = { "@zed-industries/claude-code-acp" },
+
+        }
       },
     },
   },
