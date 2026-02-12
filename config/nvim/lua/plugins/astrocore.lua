@@ -139,7 +139,13 @@ return {
           function()
             require("snacks").picker.lsp_references { auto_confirm = false }
           end,
-          desc = "Find references (list)",
+          desc = "Go to references (list)",
+        },
+        ["gi"] = {
+          function()
+            require("snacks").picker.lsp_implementations()
+          end,
+          desc = "Go to implementation (list)",
         },
         ["gd"] = {
           function()
@@ -147,10 +153,16 @@ return {
           end,
           desc = "Go to definition",
         },
+        ["gt"] = {
+          function()
+            vim.lsp.buf.type_definition()
+          end,
+          desc = "Go to type definition",
+        },
         ["<Leader>rn"] = { function() vim.lsp.buf.rename() end, desc = "Rename symbol" },
 
         -- LLM
-        ["<Leader>ac"] = { "<cmd>AvanteChat<cr>", desc = "Chat (right pane)" },
+        ["<Leader>ac"] = { "<cmd>AvanteChat<cr>", desc = "Avante Chat (right pane)" },
         ["<Leader>ap"] = {
           function()
             local providers = {
