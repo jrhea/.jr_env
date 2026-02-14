@@ -162,7 +162,7 @@ return {
         ["<Leader>rn"] = { function() vim.lsp.buf.rename() end, desc = "Rename symbol" },
 
         -- LLM
-        ["<Leader>ac"] = { "<cmd>AvanteChat<cr>", desc = "Avante Chat (right pane)" },
+        ["<Leader>ac"] = { "<cmd>AvanteChat<cr>", desc = "avante: chat (right pane)" },
         ["<Leader>ap"] = {
           function()
             local providers = {
@@ -178,7 +178,7 @@ return {
                 vim.cmd("AvanteSwitchProvider " .. choice.value)
               end)
             end,
-            desc = "Switch LLM Provider",
+            desc = "avante: switch LLM provider",
           },
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
