@@ -31,15 +31,15 @@ return {
 
       provider = "codex",
       acp_providers = {
-        codex = {
-          command = "npx",
-          args = { "@zed-industries/codex-acp" },
-        },
         ["claude-code"] = {
           command = "npx",
           args = { "@zed-industries/claude-code-acp" },
 
-        }
+        },
+        codex = {
+          command = "npx",
+          args = { "@zed-industries/codex-acp" },
+        },
       },
     },
   },
